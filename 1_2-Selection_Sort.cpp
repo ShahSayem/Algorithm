@@ -9,16 +9,28 @@ const int MAX = 10000000;
 void selectionSort(vector <int> v)
 {
     int n = v.size(), cnt = 0, minIndex;
+    bool check = false;
     for (int i = 0; i < n; i++){
+        minIndex = i, check = false;
         for (int j = i+1; j < n; j++){
-            if (v[i] > v[j])
-                swap(v[i], v[j]);
+            if (v[minIndex] > v[j]){
+                minIndex = j;
+                check = true;
+            }
+        }
+        if (check){
+            swap(v[minIndex], v[i]);
+            cnt++;
         }
     } 
 
     for (int k = 0; k < n; k++){
-        cout<<v[k]<<" ";
+        cout<<v[k];
+        if (k < n-1)
+            cout<<" ";
     }
+    cout<<"\n";
+    cout<<cnt<<"\n";
 }
 
 int main()
